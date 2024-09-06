@@ -1,0 +1,135 @@
+@charset "UTF-8";
+/* 기본 속성 */
+:root {
+  --c-white: oklch(100% 0 0);
+  --c-black: oklch(0% 0 0);
+  --c-red: oklch(65% 0.2 15);
+  --c-blue: oklch(65% 0.15 250);
+  --c-main: oklch(100% 0 0);
+  --c-sub: oklch(90% 0 0);
+  --c-border: oklch(0% 0 0);
+  --c-font: oklch(0% 0 0);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+
+  width: 100vw;
+  height: 100vh;
+
+  color: var(--c-font);
+}
+
+section {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+}
+section::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--c-border);
+  content: "";
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  color: var(--c-font);
+  font-size: 16pt;
+  background-color: var(--c-main);
+}
+
+.bg-white {
+  color: var(--c-black);
+  background-color: var(--c-white);
+}
+.bg-black {
+  color: var(--c-white);
+  background-color: var(--c-black);
+}
+.bg-red {
+  color: var(--c-white);
+  background-color: var(--c-red);
+}
+.bg-blue {
+  color: var(--c-white);
+  background-color: var(--c-blue);
+}
+
+
+/* 메인 화면 속성 */
+section#main {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: minmax(0, auto) 60px minmax(0, 1fr) 80px;
+  gap: 2px;
+}
+section#main button { border: none; }
+
+section#main > .title {
+  padding: 10px 0;
+
+  font-size: 20pt;
+  font-weight: 900;
+  text-align: center;
+  background-color: var(--c-sub);
+}
+
+section#main > .top,
+section#main > .bottom {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px;
+}
+
+section#main > .middle {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: minmax(0, 1fr) 122px;
+  gap: 2px;
+}
+
+section#main > .middle > .list {
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--c-main);
+}
+section#main > .middle > .list > h3 {
+  padding: 10px;
+
+  background-color: var(--c-sub);
+}
+
+section#main > .middle > .control {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 60px 60px;
+  gap: 2px;
+}
+section#main > .middle > .control > .price {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10px;
+
+  font-size: 24pt;
+  font-weight: 900;
+  background-color: var(--c-sub);
+}
