@@ -19,6 +19,10 @@ import { $, create, append } from "../lyra/lyra-module.js";
   $("button.close", quantModal).addEventListener("click", () => quantModal.style["display"] = "none");
   quantModal.addEventListener("click", (e) => { if (e.target === quantModal) quantModal.style["display"] = "none"; });
 
+  // 장바구니 초기화 기능 초기화
+  const btnReset = $("#button-reset");
+  btnReset.addEventListener("click", () => { for (const key in list) removeBanchan(key); });
+
   // 장바구니에 생성할 반찬 개체 클래스 정리
   class BanchanDiv {
     constructor(type, quantity = 1) {
@@ -101,7 +105,7 @@ import { $, create, append } from "../lyra/lyra-module.js";
     cost.innerText = totalCost.toLocaleString("ko-KR");
   };
 
-  // 초기화
+  // 테스트용 초기화
   addBanchan("dongtae", 3);
   addBanchan("samsaek", 2);
 })();

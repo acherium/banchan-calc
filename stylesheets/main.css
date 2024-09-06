@@ -146,7 +146,7 @@ section#main > .middle > .control > .cost {
 
 .item {
   display: grid;
-  grid-template-columns: 74px 72px minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: 74px 84px minmax(0, 1fr) minmax(0, 1fr);
   grid-template-rows: 120px;
 
   border-bottom: solid 2px var(--c-border);
@@ -165,17 +165,16 @@ section#main > .middle > .control > .cost {
 
 .item > .thumb {
   display: grid;
-  place-items: center left;
+  place-items: center;
 
   pointer-events: none;
 }
 .item > .thumb > img {
-  width: 62px;
-  height: 64px;
+  width: 74px;
+  height: 74px;
   object-fit: cover;
 
   border: solid 2px var(--c-border);
-  border-left: none;
 }
 
 .item > .left,
