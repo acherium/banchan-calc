@@ -1,0 +1,18 @@
+{
+  "jeon": {
+    "key": "jeon",
+    "name": "전류"
+  },
+  "namul": {
+    "key": "namul",
+    "name": "나물류"
+  },
+  "jeok": {
+    "key": "jeok",
+    "name": "적"
+  },
+  "others": {
+    "key": "others",
+    "name": "기타 반찬"
+  }
+}

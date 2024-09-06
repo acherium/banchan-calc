@@ -80,7 +80,6 @@ section#main {
   grid-template-rows: minmax(0, auto) 60px minmax(0, 1fr) 80px;
   gap: 2px;
 }
-section#main button { border: none; }
 
 section#main > .title {
   padding: 10px 0;
@@ -97,6 +96,8 @@ section#main > .bottom {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2px;
 }
+section#main > .top > button,
+section#main > .bottom > button { border: none; }
 
 section#main > .middle {
   display: grid;
@@ -105,16 +106,24 @@ section#main > .middle {
   gap: 2px;
 }
 
-section#main > .middle > .list {
+section#main > .middle > .banchan-list {
   display: flex;
   flex-direction: column;
 
   background-color: var(--c-main);
 }
-section#main > .middle > .list > h3 {
+section#main > .middle > .banchan-list > h3 {
   padding: 10px;
 
+  border-bottom: solid 2px var(--c-border);
   background-color: var(--c-sub);
+}
+section#main > .middle > .banchan-list > .list-body {
+  overflow-y: scroll;
+
+  flex: 1;
+  width: 100%;
+  height: 100%;
 }
 
 section#main > .middle > .control {
@@ -123,7 +132,8 @@ section#main > .middle > .control {
   grid-template-rows: 60px 60px;
   gap: 2px;
 }
-section#main > .middle > .control > .price {
+section#main > .middle > .control > button { border: none; }
+section#main > .middle > .control > .cost {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -132,4 +142,109 @@ section#main > .middle > .control > .price {
   font-size: 24pt;
   font-weight: 900;
   background-color: var(--c-sub);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 74px 72px minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: 120px;
+
+  border-bottom: solid 2px var(--c-border);
+}
+
+.item > .remove {
+  display: grid;
+  place-items: center right;
+}
+.item > .remove > button {
+  width: 64px;
+  height: 64px;
+
+  border: solid 2px var(--c-border);
+}
+
+.item > .thumb {
+  display: grid;
+  place-items: center left;
+
+  pointer-events: none;
+}
+.item > .thumb > img {
+  width: 62px;
+  height: 64px;
+  object-fit: cover;
+
+  border: solid 2px var(--c-border);
+  border-left: none;
+}
+
+.item > .left,
+.item > .right {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-right: 10px;
+  
+  pointer-events: none;
+}
+.item > .right { align-items: flex-end; }
+
+
+/* 모달 속성 */
+.modal {
+  display: none;
+  position: fixed;
+  place-items: center;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  width: 100dvw;
+  height: 100dvh;
+
+  background-color: oklch(0% 0 0/0.5);
+}
+
+.modal > .body {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+  gap: 20px;
+
+  width: 100%;
+  height: max-content;
+
+  border-top: solid 2px var(--c-border);
+  border-bottom: solid 2px var(--c-border);
+  background-color: var(--c-main);
+}
+
+.modal > .body > button {
+  width: 100%;
+  height: 60px;
+
+  border: solid 2px var(--c-border);
+}
+
+
+/* 반찬 수량 조절 모달 고유 속성 */
+.quantity-control {
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr) 60px;
+  grid-template-rows: 60px;
+  padding: 2px;
+  gap: 2px;
+
+  background-color: var(--c-border);
+}
+.quantity-control > button { border: none; }
+.quantity-control > input[type=number] {
+  padding: 10px;
+
+  color: var(--c-font);
+  font-size: 24px;
+  font-weight: 900;
+  appearance: textfield;
+  border: none;
+  background-color: var(--c-main);
 }

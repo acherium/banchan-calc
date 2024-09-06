@@ -1,0 +1,16 @@
+{
+  "dongtae": {
+    "key": "dongtae",
+    "name": "동태전",
+    "type": "jeon",
+    "thumbnail": "./db/thumbnails/transparent.svg",
+    "price": 4000
+  },
+  "samsaek": {
+    "key": "samsaek",
+    "name": "삼색전",
+    "type": "jeon",
+    "thumbnail": "./db/thumbnails/transparent.svg",
+    "price": 4000
+  }
+}

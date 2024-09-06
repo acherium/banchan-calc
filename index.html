@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>반찬 계산기</title>
+  <link rel="shortcut icon" href="./lyra/assets/essentials/favicon.svg" type="image/x-icon">
 
-  <link rel="stylesheet" href="./stylesheets/lyra-icons.css">
+  <link rel="stylesheet" href="./lyra/stylesheets/icons/lyra-icons.css">
+  <!-- <link rel="stylesheet" href="./lyra/stylesheets/parts/statical/lyra-flexlist.css"> -->
   <link rel="stylesheet" href="./stylesheets/main.css">
 
-  <script src="./scripts/main.js" defer></script>
+  <script type="module" src="./scripts/main.js" defer></script>
 </head>
 <body>
   <section id="main">
@@ -18,13 +20,13 @@
       <button><div class="i i-plus"></div>반찬 추가</button>
     </div>
     <div class="middle">
-      <div class="list">
+      <div class="banchan-list">
         <h3>장바구니</h3>
         <div class="list-body"></div>
       </div>
       <div class="control">
         <button><div class="i i-counter-clockwise"></div>장바구니 초기화</button>
-        <div class="price">0원</div>
+        <div class="cost"><span id="cost-total">0</span>원</div>
       </div>
     </div>
     <div class="bottom">
@@ -32,5 +34,16 @@
       <button class="bg-blue"><div class="i i-import-white"></div>기록 저장</button>
     </div>
   </section>
+  <div id="modal-quantity" class="modal">
+    <div class="body">
+      <h1>수량 조절: <span class="name"></span></h1>
+      <div class="quantity-control">
+        <button class="minus bg-red"><div class="i i-minus-white"></div></button>
+        <input type="number" min="1" max="1000" value="1" class="input">
+        <button class="plus bg-blue"><div class="i i-plus-white"></div></button>
+      </div>
+      <button class="close"><div class="i i-accept"></div>확인</button>
+    </div>
+  </div>
 </body>
 </html>

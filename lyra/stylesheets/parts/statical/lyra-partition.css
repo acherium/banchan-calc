@@ -1,0 +1,13 @@
+@charset "UTF-8";
+.divline,
+.divline-column {
+  width: 2px;
+
+  background-color: var(--c-border);
+}
+
+.divline-row {
+  height: 2px;
+
+  background-color: var(--c-border);
+}
