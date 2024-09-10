@@ -7,9 +7,9 @@
     "key": "namul",
     "name": "나물류"
   },
-  "jeok": {
-    "key": "jeok",
-    "name": "적"
+  "gui": {
+    "key": "gui",
+    "name": "구이류"
   },
   "others": {
     "key": "others",

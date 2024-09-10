@@ -40,7 +40,11 @@ import { $, create, append } from "../lyra/lyra-module.js";
         events: { click: () => removeBanchan(type) } }), this.nodes.remove);
 
       this.nodes.thumb = append(create("div", { classes: [ "thumb" ] }), this.nodes.main);
-      this.nodes.thumbImage = append(create("img", { properties: { "src": `${this.data.thumbnail}` } }), this.nodes.thumb);
+      this.nodes.thumbImage = append(create("img", {
+        properties: {
+          "src": (this.data.thumbnail && (this.data.thumbnail.length > 0)) ? `${this.data.thumbnail}` : "./db/thumbnails/transparent.svg"
+        }
+      }), this.nodes.thumb);
 
       this.nodes.left = append(create("div", { classes: [ "left" ] }), this.nodes.main);
       this.nodes.name = append(create("h1", { properties: { innerText: `${this.data.name}` } }), this.nodes.left);

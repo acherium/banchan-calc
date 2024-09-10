@@ -1,16 +1,142 @@
 {
+  "steak": {
+    "key": "steak",
+    "name": "쇠고기적(한우)",
+    "type": "gui",
+    "thumbnail": "./db/thumbnails/steak.webp",
+    "price": 15000
+  },
+  "pork-jeju": {
+    "key": "pork-jeju",
+    "name": "돼지고기적(제주산)",
+    "type": "gui",
+    "thumbnail": "./db/thumbnails/pork.webp",
+    "price": 13000
+  },
+  "pork-import": {
+    "key": "pork-import",
+    "name": "돼지고기적(수입산)",
+    "type": "gui",
+    "thumbnail": "./db/thumbnails/pork.webp",
+    "price": 10000
+  },
+  "squid": {
+    "key": "squid",
+    "name": "오징어꼬지",
+    "type": "gui",
+    "thumbnail": "",
+    "price": 10000
+  },
+  "okdom": {
+    "key": "okdom",
+    "name": "옥돔구이",
+    "type": "gui",
+    "thumbnail": "./db/thumbnails/okdom.webp",
+    "price": 10000
+  },
   "dongtae": {
     "key": "dongtae",
     "name": "동태전",
     "type": "jeon",
-    "thumbnail": "./db/thumbnails/transparent.svg",
-    "price": 4000
+    "thumbnail": "./db/thumbnails/dongtae.webp",
+    "price": 8000
+  },
+  "ggaennip": {
+    "key": "ggaennip",
+    "name": "깻잎전",
+    "type": "jeon",
+    "thumbnail": "",
+    "price": 7000
   },
   "samsaek": {
     "key": "samsaek",
-    "name": "삼색전",
+    "name": "삼색꼬지",
     "type": "jeon",
-    "thumbnail": "./db/thumbnails/transparent.svg",
-    "price": 4000
+    "thumbnail": "./db/thumbnails/samsaek.webp",
+    "price": 8000
+  },
+  "mushroom": {
+    "key": "mushroom",
+    "name": "버섯전",
+    "type": "jeon",
+    "thumbnail": "",
+    "price": 6000
+  },
+  "aehobak": {
+    "key": "aehobak",
+    "name": "호박전",
+    "type": "jeon",
+    "thumbnail": "",
+    "price": 6000
+  },
+  "dongrang": {
+    "key": "donggrang",
+    "name": "동그랑땡",
+    "type": "jeon",
+    "thumbnail": "./db/thumbnails/donggrang.webp",
+    "price": 7000
+  },
+  "tofu": {
+    "key": "tofu",
+    "name": "두부전",
+    "type": "jeon",
+    "thumbnail": "./db/thumbnails/tofu.webp",
+    "price": 5000
+  },
+  "doraji": {
+    "key": "doraji",
+    "name": "도라지",
+    "type": "namul",
+    "thumbnail": "",
+    "price": 5000
+  },
+  "gosari": {
+    "key": "gosari",
+    "name": "고사리",
+    "type": "namul",
+    "thumbnail": "./db/thumbnails/gosari.webp",
+    "price": 5000
+  },
+  "kongnamul": {
+    "key": "kongnamul",
+    "name": "콩나물",
+    "type": "namul",
+    "thumbnail": "./db/thumbnails/kongnamul.webp",
+    "price": 3000
+  },
+  "minari": {
+    "key": "minari",
+    "name": "시금치(미나리)",
+    "type": "namul",
+    "thumbnail": "./db/thumbnails/minari.webp",
+    "price": 8000
+  },
+  "japchae": {
+    "key": "japchae",
+    "name": "잡채(1kg)",
+    "type": "others",
+    "thumbnail": "./db/thumbnails/japchae.webp",
+    "price": 10000
+  },
+  "japchae-half": {
+    "key": "japchae-half",
+    "name": "잡채(500g)",
+    "type": "others",
+    "thumbnail": "./db/thumbnails/japchae.webp",
+    "price": 5000
+  },
+  "guk": {
+    "key": "guk",
+    "name": "갱국",
+    "type": "others",
+    "thumbnail": "./db/thumbnails/guk.webp",
+    "price": 6000
+  },
+  "sikhye": {
+    "key": "sikhye",
+    "name": "식혜(1.5L)",
+    "type": "others",
+    "thumbnail": "",
+    "price": 5000
   }
 }
