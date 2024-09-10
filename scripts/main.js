@@ -92,8 +92,16 @@ import { $, create, append } from "../lyra/lyra-module.js";
   const addBanchan = (type, quantity) => {
     if (typeof banchans[type] === "undefined") throw Error("Banchan type error");
 
-    const banchan = new BanchanDiv(type, quantity);
-    list[type] = banchan;
+    if (list[type]) {
+      list[type].setQuantity(list[type].quantity + 1);
+    } else {
+      const banchan = new BanchanDiv(type, quantity);
+      list[type] = banchan;
+    };
+
+    const counter = $("h1.count", $(`#banchan-${type}`));
+    counter.style["display"] = "inline";
+    counter.innerText = `${list[type].quantity}개`;
     refreshCost();
   };
   const removeBanchan = (type) => {
@@ -102,6 +110,8 @@ import { $, create, append } from "../lyra/lyra-module.js";
 
     list[type].nodes.main.remove();
     delete list[type];
+
+    $("h1.count", $(`#banchan-${type}`)).style["display"] = "none";
     refreshCost();
   };
   const refreshCost = () => {
@@ -109,7 +119,42 @@ import { $, create, append } from "../lyra/lyra-module.js";
     cost.innerText = totalCost.toLocaleString("ko-KR");
   };
 
-  // 테스트용 초기화
-  addBanchan("dongtae", 3);
-  addBanchan("samsaek", 2);
+  // 반찬 목록 초기화
+  const $menu = $("section#menuboard");
+  const $menulist = $(".list", $menu);
+  const $btnMemuOpen = $("#button-menu-open");
+  const $btnMenuClose = $("button.close", $menu);
+  const menus = Object.keys(banchanTypes).map((x) => Object.fromEntries([ [ "key", x ], [ "name", banchanTypes[x].name ], [ "banchans", Object.values(banchans).filter((y) => y.type === x) ] ]));
+  $btnMemuOpen.addEventListener("click", () => $menu.style["display"] = "grid");
+  $btnMenuClose.addEventListener("click", () => $menu.style["display"] = "none");
+  for (const item of menus) {
+    append(create("h3", { properties: { innerText: item.name } }), $menulist);
+    for (const banchan of item.banchans) {
+      const banchanDiv = create("div", { id: `banchan-${banchan.key}`, classes: [ "item" ] });
+      append(create("div", {
+        classes: [ "thumb" ],
+        properties: {
+          innerHTML: `<img src="${(banchan.thumbnail && (banchan.thumbnail.length > 0)) ? banchan.thumbnail : "./db/thumbnails/transparent.svg"}" loading="lazy" alt="${banchan.name}"></img>`
+        }
+      }), banchanDiv);
+      append(create("div", {
+        classes: [ "left" ],
+        properties: {
+          innerHTML: `<h1>${banchan.name}</h1><br>` +
+            `<p>개당 ${banchan.price.toLocaleString("ko-KR")}원</p>`
+        }
+      }), banchanDiv);
+      append(create("div", {
+        classes: [ "right" ],
+        properties: {
+          innerHTML: `<h1 class="count" style="display: none;"></h1>`
+        }
+      }), banchanDiv);
+
+      banchanDiv.addEventListener("click", () => {
+        addBanchan(banchan.key, 1);
+      });
+      append(banchanDiv, $menulist);
+    };
+  };
 })();

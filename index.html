@@ -15,8 +15,8 @@
   <section id="main">
     <div class="title">도남 소문난반찬집</div>
     <div class="top">
-      <button><div class="i i-menu"></div>기록 보기</button>
-      <button><div class="i i-plus"></div>반찬 추가</button>
+      <button><div class="i i-menu-black"></div>기록 보기</button>
+      <button id="button-menu-open"><div class="i i-plus-black"></div>반찬 추가</button>
     </div>
     <div class="middle">
       <div class="banchan-list">
@@ -24,7 +24,7 @@
         <div class="list-body"></div>
       </div>
       <div class="control">
-        <button id="button-reset"><div class="i i-counter-clockwise"></div>장바구니 초기화</button>
+        <button id="button-reset"><div class="i i-counter-clockwise-black"></div>장바구니 초기화</button>
         <div class="cost"><span id="cost-total">0</span>원</div>
       </div>
     </div>
@@ -32,6 +32,16 @@
       <button class="bg-red"><div class="i i-plus-white"></div>크게 보기</button>
       <button class="bg-blue"><div class="i i-import-white"></div>기록 저장</button>
     </div>
+  </section>
+  <section id="menuboard" style="display: none;">
+    <div class="title">
+      <p>반찬 추가</p>
+      <button class="bg-red close">
+        <div class="i i-deny-white"></div>
+        <p>닫기</p>
+      </button>
+    </div>
+    <div class="list"></div>
   </section>
   <div id="modal-quantity" class="modal">
     <div class="body">

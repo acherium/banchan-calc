@@ -26,7 +26,7 @@ body {
 }
 
 section {
-  position: relative;
+  position: absolute;
 
   width: 100%;
   height: 100%;
@@ -151,32 +151,33 @@ section#main > .middle > .control > .cost {
   background-color: var(--c-sub);
 }
 
-.item {
+section#main .item {
   display: grid;
   grid-template-columns: 54px 84px minmax(0, 1fr) minmax(0, 1fr);
   grid-template-rows: 120px;
 
   border-bottom: solid 2px var(--c-border);
+  user-select: none;
 }
 
-.item > .remove {
+section#main .item > .remove {
   display: grid;
   place-items: center right;
 }
-.item > .remove > button {
+section#main .item > .remove > button {
   width: 44px;
   height: 64px;
 
   border: solid 2px var(--c-border);
 }
 
-.item > .thumb {
+section#main .item > .thumb {
   display: grid;
   place-items: center;
 
   pointer-events: none;
 }
-.item > .thumb > img {
+section#main .item > .thumb > img {
   width: 74px;
   height: 74px;
   object-fit: cover;
@@ -184,8 +185,8 @@ section#main > .middle > .control > .cost {
   border: solid 2px var(--c-border);
 }
 
-.item > .left,
-.item > .right {
+section#main .item > .left,
+section#main .item > .right {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -193,7 +194,7 @@ section#main > .middle > .control > .cost {
   
   pointer-events: none;
 }
-.item > .right { align-items: flex-end; }
+section#main .item > .right { align-items: flex-end; }
 
 
 /* 모달 속성 */
@@ -254,3 +255,95 @@ section#main > .middle > .control > .cost {
   border: none;
   background-color: var(--c-main);
 }
+
+
+/* 반찬 추가 화면 속성 */
+section#menuboard {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: minmax(0, auto) minmax(0, 1fr);
+  gap: 2px;
+  z-index: 0;
+}
+
+section#menuboard > .title {
+  display: flex;
+  gap: 2px;
+
+  font-size: 20pt;
+  font-weight: 900;
+  text-align: center;
+  background-color: var(--c-border);
+}
+section#menuboard > .title > p {
+  padding: 10px 0;
+
+  flex: 1;
+  width: 100%;
+
+  background-color: var(--c-sub);
+}
+section#menuboard > .title > button {
+  padding: 0 20px;
+
+  border: none;
+}
+
+section#menuboard > .list {
+  display: block;
+  overflow-y: scroll;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--c-border);
+}
+section#menuboard > .list > *:not(:last-child) { margin-bottom: 2px; }
+section#menuboard > .list > h3 {
+  padding: 10px;
+
+  font-size: 16pt;
+  font-weight: 900;
+  background-color: var(--c-sub);
+}
+
+section#menuboard .item {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr) minmax(0, auto) ;
+  grid-template-rows: 120px;
+
+  background-color: var(--c-main);
+  user-select: none;
+
+  transition: ease-in-out 0.1s;
+  transition-property: opacity, transform;
+}
+section#menuboard .item:active {
+  opacity: 0.5;
+  transform: scale(0.9);
+}
+
+section#menuboard .item > .thumb {
+  display: grid;
+  place-items: center;
+
+  pointer-events: none;
+}
+section#menuboard .item > .thumb > img {
+  width: 74px;
+  height: 74px;
+  object-fit: cover;
+
+  border: solid 2px var(--c-border);
+}
+
+section#menuboard .item > .left,
+section#menuboard .item > .right {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-right: 10px;
+  
+  pointer-events: none;
+}
+section#menuboard .item > .right { align-items: flex-end; }
