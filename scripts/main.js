@@ -203,6 +203,7 @@ import { $, create, append } from "../lyra/lyra-module.js";
     initHistoryToday();
     const raw = JSON.parse(localStorage.getItem("history"));
     const history = Object.keys(raw).map((x) => [ x, raw[x] ]).sort((a, b) => a < b);
+    for (const node of histlist.childNodes) node.remove();
 
     for (const item of history) {
       const histdiv = append(create("div", { classes: [ "item" ], properties: { innerHTML: `<h1>${item[0]}</h1>` } }), histlist);
