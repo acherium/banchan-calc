@@ -45,7 +45,7 @@
     "key": "ggaennip",
     "name": "깻잎전",
     "type": "jeon",
-    "thumbnail": "",
+    "thumbnail": "./db/thumbnails/ggaennip.webp",
     "price": 7000
   },
   "samsaek": {
@@ -59,7 +59,7 @@
     "key": "mushroom",
     "name": "버섯전",
     "type": "jeon",
-    "thumbnail": "",
+    "thumbnail": "./db/thumbnails/mushroom.webp",
     "price": 6000
   },
   "aehobak": {
@@ -87,7 +87,7 @@
     "key": "doraji",
     "name": "도라지",
     "type": "namul",
-    "thumbnail": "",
+    "thumbnail": "./db/thumbnails/doraji.webp",
     "price": 5000
   },
   "gosari": {
@@ -109,7 +109,7 @@
     "name": "시금치(미나리)",
     "type": "namul",
     "thumbnail": "./db/thumbnails/minari.webp",
-    "price": 8000
+    "price": 10000
   },
   "japchae": {
     "key": "japchae",
@@ -136,7 +136,14 @@
     "key": "sikhye",
     "name": "식혜(1.5L)",
     "type": "others",
-    "thumbnail": "",
+    "thumbnail": "./db/thumbnails/sikhye.webp",
     "price": 5000
+  },
+  "bojagi": {
+    "key": "bojagi",
+    "name": "계란보자기",
+    "type": "others",
+    "thumbnail": "",
+    "price": 2000
   }
 }

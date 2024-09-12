@@ -347,3 +347,67 @@ section#menuboard .item > .right {
   pointer-events: none;
 }
 section#menuboard .item > .right { align-items: flex-end; }
+
+
+/* 크게 보기 화면 속성 */
+section#report {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+
+  width: 100dvh;
+  height: 100dvw;
+
+  background-color: var(--c-white);
+
+  transform: rotate(90deg) translateY(-100dvw);
+  transform-origin: top left;
+}
+section#report::before { content: none; }
+
+section#report > .left {
+  display: block;
+  overflow-y: scroll;
+
+  height: 100dvw;
+
+  /* background-color: yellow; */
+}
+section#report > .left .item {
+  display: grid;
+  grid-template-columns: minmax(0, 45%) minmax(0, 20%) minmax(0, 35%);
+  gap: 5px;
+
+  border-bottom: solid 2px var(--c-black);
+}
+section#report > .left .item {
+  padding: 5px;
+
+  color: var(--c-black);
+  font-size: 20pt;
+}
+section#report > .left .item *:not(:first-child) {
+  padding-left: 5px;
+
+  border-left: solid 2px var(--c-black);
+}
+
+section#report > .right {
+  display: grid;
+  grid-template-rows: 80px minmax(0, 1fr);
+
+  border-left: solid 2px var(--c-black);
+}
+section#report > .right > button {
+  color: var(--c-black);
+  border: none;
+  border-bottom: solid 2px var(--c-black);
+}
+section#report > .right > div {
+  display: grid;
+  place-items: end right;
+  padding-right: 10px;
+
+  color: var(--c-black);
+  font-size: 40pt;
+  font-weight: 900;
+}

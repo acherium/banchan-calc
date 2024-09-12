@@ -30,8 +30,8 @@
       </div>
     </div>
     <div class="bottom">
-      <button class="bg-red"><div class="i i-plus-white"></div>크게 보기</button>
-      <button class="bg-blue"><div class="i i-import-white"></div>기록 저장</button>
+      <button id="button-report" class="bg-red"><div class="i i-plus-white"></div>크게 보기</button>
+      <button id="button-save" class="bg-blue"><div class="i i-import-white"></div>기록 저장</button>
     </div>
   </section>
   <section id="menuboard" style="display: none;">
@@ -43,6 +43,23 @@
       </button>
     </div>
     <div class="list"></div>
+  </section>
+  <section id="report" style="display: none;">
+    <div class="left">
+      <div class="item">
+        <p>품목명</p>
+        <p>수량</p>
+        <p>가격</p>
+      </div>
+      <div id="report-list"></div>
+    </div>
+    <div class="right">
+      <button class="close">
+        <div class="il i-deny-black"></div>
+        닫기
+      </button>
+      <div><p><span id="report-cost"></span>원</p></div>
+    </div>
   </section>
   <div id="modal-quantity" class="modal">
     <div class="body">

@@ -9,6 +9,13 @@ import { $, create, append } from "../lyra/lyra-module.js";
   let list = {};
   const listDiv = $(".list-body");
   const cost = $("span#cost-total");
+  const rep = $("#report");
+  const repList = $("#report-list");
+  const repCost = $("#report-cost");
+  const btnRep = $("#button-report");
+  const btnRepClose = $("button.close", rep);
+  btnRep.addEventListener("click", () => rep.style["display"] = "grid");
+  btnRepClose.addEventListener("click", () => rep.style["display"] = "none");
 
   // 수량 조절 모달 기능 초기화
   const quantModal = $("#modal-quantity");
@@ -54,6 +61,10 @@ import { $, create, append } from "../lyra/lyra-module.js";
       this.nodes.quantity = append(create("h3"), this.nodes.right);
       this.nodes.price = append(create("h3"), this.nodes.right);
 
+      this.nodes.report = append(create("div", { classes: [ "item" ], properties: { innerHTML: `<p>${this.data.name}</p>` } }), repList);
+      this.nodes.reportQuantity = append(create("p"), this.nodes.report);
+      this.nodes.reportPrice = append(create("p"), this.nodes.report);
+
       this.nodes.main.addEventListener("click", (e) => {
         if (e.target !== this.nodes.main) return;
 
@@ -82,8 +93,12 @@ import { $, create, append } from "../lyra/lyra-module.js";
     setQuantity(i) {
       this.quantity = i;
       this.price = this.data.price * this.quantity;
+
       this.nodes.quantity.innerText = `수량: ${this.quantity}개`;
-      this.nodes.price.innerText = `${(this.data.price * this.quantity).toLocaleString("ko-KR")}원`;
+      this.nodes.price.innerText = `${this.price.toLocaleString("ko-KR")}원`;
+
+      this.nodes.reportQuantity.innerText = `${this.quantity}개`;
+      this.nodes.reportPrice.innerText = `${this.price.toLocaleString("ko-KR")}원`;
       refreshCost();
     };
   };
@@ -109,6 +124,7 @@ import { $, create, append } from "../lyra/lyra-module.js";
     if (typeof list[type] === "undefined") return;
 
     list[type].nodes.main.remove();
+    list[type].nodes.report.remove();
     delete list[type];
 
     $("h1.count", $(`#banchan-${type}`)).style["display"] = "none";
@@ -117,6 +133,7 @@ import { $, create, append } from "../lyra/lyra-module.js";
   const refreshCost = () => {
     const totalCost = Object.values(list).map((x) => x.price).reduce((a, b) => a + b, 0);
     cost.innerText = totalCost.toLocaleString("ko-KR");
+    repCost.innerText = totalCost.toLocaleString("ko-KR");
   };
 
   // 반찬 목록 초기화
@@ -157,4 +174,12 @@ import { $, create, append } from "../lyra/lyra-module.js";
       append(banchanDiv, $menulist);
     };
   };
+
+
+
+  // 테스트용
+  // addBanchan("ggaennip", 1);
+  // addBanchan("sikhye", 1);
+  // addBanchan("doraji", 1);
+  // addBanchan("mushroom", 1);
 })();
