@@ -175,11 +175,81 @@ import { $, create, append } from "../lyra/lyra-module.js";
     };
   };
 
+  // 기록 기능용 함수
+  const getDate = () => moment().format("YYYY년 MM월 DD일");
+  const initStorage = () => {
+    if (localStorage.getItem("history") === null || localStorage.getItem("history") === "undefined") localStorage.setItem("history", "{}");
+  };
+  const initHistoryToday = () => {
+    initStorage();
+    const history = JSON.parse(localStorage.getItem("history"));
+    const date = getDate();
+    if (typeof history[date] === "undefined" || history[date] === "undefined") {
+      history[date] = [];
+      localStorage.setItem("history", JSON.stringify(history));
+    };
+  };
+  const saveHistoryToday = () => {
+    initHistoryToday();
+    const history = JSON.parse(localStorage.getItem("history"));
+    const date = getDate();
+    const today = history[date];
 
+    const res = [ Date.now(), Object.values(list).map((x) => [ x.data.key, x.data.price, x.quantity, x.price ]) ];
+    today.push(res);
+    localStorage.setItem("history", JSON.stringify(history));
+  };
+  const refreshHistory = () => {
+    initHistoryToday();
+    const raw = JSON.parse(localStorage.getItem("history"));
+    const history = Object.keys(raw).map((x) => [ x, raw[x] ]).sort((a, b) => a < b);
+
+    for (const item of history) {
+      const histdiv = append(create("div", { classes: [ "item" ], properties: { innerHTML: `<h1>${item[0]}</h1>` } }), histlist);
+      const dateTotal = item[1].map((x) => x[1].map((y) => y[3]).reduce((a, b) => a + b, 0)).reduce((a, b) => a + b, 0);
+      append(create("h3", { properties: { innerText: `이 날 판매총액: ${dateTotal.toLocaleString("ko-KR")}원` } }), histdiv);
+
+      const histsubdiv = append(create("div", { classes: [ "subitem" ], properties: { innerHTML: `<h3>상세 내역</h3>` } }), histdiv);
+      for (const recs of item[1]) {
+        const time = moment(recs[0]).format("HH시 mm분 ss초");
+        const indivReceipts = append(create("div", {
+          classes: [ "item" ],
+          properties: {
+            innerText: `${time}: ${recs[1].map((x) => x[3]).reduce((a, b) => a + b, 0).toLocaleString("ko-KR")}원\n` +
+              `${recs[1].map((x) => `- ${banchans[x[0]].name}(${x[2]}개): ${x[3].toLocaleString("ko-KR")}원`).join("\n")}`
+          }
+        }), histsubdiv);
+      };
+    };
+  };
+
+  // 기록 저장 기능 초기화
+  const histarea = $("#history");
+  const histlist = $(".list", histarea);
+  const btnHistarea = $("#button-history");
+  const btnHistareaClose = $("button.close", histarea);
+  btnHistarea.addEventListener("click", () => {
+    histarea.style["display"] = "grid";
+    refreshHistory();
+  });
+  btnHistareaClose.addEventListener("click", () => histarea.style["display"] = "none");
+
+  const saveModal = $("#modal-save");
+  const btnSaveOpen = $("#button-save");
+  const btnSaveDo = $("button.save", saveModal);
+  const btnSaveCancel = $("button.cancel", saveModal);
+  btnSaveOpen.addEventListener("click", () => saveModal.style["display"] = "grid");
+  btnSaveDo.addEventListener("click", () => {
+    saveHistoryToday();
+    for (const key in list) removeBanchan(key);
+    saveModal.style["display"] = "none";
+  });
+  btnSaveCancel.addEventListener("click", () => saveModal.style["display"] = "none");
 
   // 테스트용
-  // addBanchan("ggaennip", 1);
-  // addBanchan("sikhye", 1);
-  // addBanchan("doraji", 1);
-  // addBanchan("mushroom", 1);
+  // addBanchan("ggaennip", 2);
+  // addBanchan("sikhye", 3);
+
+  // 로컬 저장소 초기화
+  initHistoryToday();
 })();
